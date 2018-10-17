@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="boge-blog">
 <meta property="og:description" content="腾讯视频面  昨晚7点在东哥宿舍进行了腾讯视频，面试官知道我在南京那边面过一面，问我为啥没去二面，我说时间冲突了，他说他这边是南京地区，是把我捞起来面的，需要重新面，如果过了的话还要去上海技术复面+HR面，这周日之前给结果。 面试内容CSS部分 position有哪几个值，分别说说。 px em rem vh wh 分别说说。     值 描述     absolute 生成绝对定位的元素，相对于">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-10-17T02:18:57.727Z">
+<meta property="og:updated_time" content="2018-10-17T02:53:31.010Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="腾讯面经">
 <meta name="twitter:description" content="腾讯视频面  昨晚7点在东哥宿舍进行了腾讯视频，面试官知道我在南京那边面过一面，问我为啥没去二面，我说时间冲突了，他说他这边是南京地区，是把我捞起来面的，需要重新面，如果过了的话还要去上海技术复面+HR面，这周日之前给结果。 面试内容CSS部分 position有哪几个值，分别说说。 px em rem vh wh 分别说说。     值 描述     absolute 生成绝对定位的元素，相对于">
@@ -338,14 +338,56 @@
 </tbody>
 </table>
 <ul>
-<li>rem: root emphasize，根元素的font-size</li>
+<li>rem: root emphasize，根元素的font-size(一般可以取浏览器屏幕大小的10分之一作为1rem)</li>
 <li>vw: 屏幕宽度相关，1vw是可视区域宽度的1%</li>
 <li>vh: 屏幕高度相关，1vh是可视区域高度的1%<blockquote>
-<p>根元素：document.documentElement<br>可视区域：window.innerWidth/window.innerHeight</p>
+<p>根元素：document.documentElement<br>可视区域：window.innerWidth/window.innerHeight,但是包括滚动条的大小</p>
 </blockquote>
-<h2 id="JS部分"><a href="#JS部分" class="headerlink" title="JS部分"></a>JS部分</h2></li>
+<h3 id="相关大小定位说明："><a href="#相关大小定位说明：" class="headerlink" title="相关大小定位说明："></a>相关大小定位说明：</h3></li>
 </ul>
-<ol>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">值名称</th>
+<th style="text-align:center">含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">document.documentElement.clientWidth/Height</td>
+<td style="text-align:center">获得屏幕可视区域的宽高，不包括滚动条和工具条大小</td>
+</tr>
+<tr>
+<td style="text-align:center">window.innerWidth/Height</td>
+<td style="text-align:center">获得的是可视区域的宽高，同时包括滚动条的大小(vh，vw以这个作为参考值1%)</td>
+</tr>
+<tr>
+<td style="text-align:center">window.outerWidth/Height</td>
+<td style="text-align:center">获得的是可视区域的宽高，同时包括滚动条和工具栏的大小</td>
+</tr>
+<tr>
+<td style="text-align:center">offsetWidth/Htight</td>
+<td style="text-align:center">本身的宽高+padding+border+滚动条</td>
+</tr>
+<tr>
+<td style="text-align:center">offsetLeft/Top</td>
+<td style="text-align:center">相对于已定位这些属性返回的坐标是相对于祖先元素一般元素</td>
+</tr>
+<tr>
+<td style="text-align:center">scrollWidth/Height</td>
+<td style="text-align:center">这两个属性是元素的内容区域加上内边距，在加上任何溢出内容的尺寸.因此，如果没有溢出时，这些属性与clientWidth和clientHeight是相等的</td>
+</tr>
+<tr>
+<td style="text-align:center">scrollLeft/Top</td>
+<td style="text-align:center">指定的是元素的滚动条的位置,可结合clientHeight判断元素是否在视窗内</td>
+</tr>
+<tr>
+<td style="text-align:center">getBoundingClientRect()</td>
+<td style="text-align:center">返回元素相对于视窗的位置，不用循环判断父元素，更方便</td>
+</tr>
+</tbody>
+</table>
+<h2 id="JS部分"><a href="#JS部分" class="headerlink" title="JS部分"></a>JS部分</h2><ol>
 <li>判断一个元素的属性来自实例还是来自原型（hasOwnProperty）</li>
 <li>getelement和querySelector返回的对象区别。</li>
 <li>类数组转换的方法</li>
@@ -540,7 +582,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#腾讯视频面"><span class="nav-number">1.</span> <span class="nav-text">腾讯视频面</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#面试内容"><span class="nav-number">2.</span> <span class="nav-text">面试内容</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#CSS部分"><span class="nav-number">2.1.</span> <span class="nav-text">CSS部分</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#JS部分"><span class="nav-number">2.2.</span> <span class="nav-text">JS部分</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#手写冒泡算法"><span class="nav-number">2.3.</span> <span class="nav-text">手写冒泡算法</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#腾讯视频面"><span class="nav-number">1.</span> <span class="nav-text">腾讯视频面</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#面试内容"><span class="nav-number">2.</span> <span class="nav-text">面试内容</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#CSS部分"><span class="nav-number">2.1.</span> <span class="nav-text">CSS部分</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#相关大小定位说明："><span class="nav-number">2.1.1.</span> <span class="nav-text">相关大小定位说明：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#JS部分"><span class="nav-number">2.2.</span> <span class="nav-text">JS部分</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#手写冒泡算法"><span class="nav-number">2.3.</span> <span class="nav-text">手写冒泡算法</span></a></li></ol></li></ol></div>
             
 
           </div>
